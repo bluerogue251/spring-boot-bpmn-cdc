@@ -4,7 +4,9 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.sql.Timestamp;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "users")
@@ -13,21 +15,41 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    @NotNull
+    private String username;
+
+    @NotNull
+    private String encryptedPassword;
+
+    @NotNull
     private String firstName;
 
+    @NotNull
     private String lastName;
 
+    @NotNull
     @CreationTimestamp
-    private Timestamp createdAt;
+    private Timestamp createdAt = Timestamp.valueOf(LocalDateTime.now());
 
+    @NotNull
     @UpdateTimestamp
-    private Timestamp updatedAt;
+    private Timestamp updatedAt = Timestamp.valueOf(LocalDateTime.now());
 
     protected User() {
     }
 
-    public User(String firstName, String lastName) {
+    public User(String firstName, String lastName, String username, String encryptedPassword) {
         this.firstName = firstName;
         this.lastName = lastName;
+        this.username = username;
+        this.encryptedPassword = encryptedPassword;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public String getEncryptedPassword() {
+        return encryptedPassword;
     }
 }
