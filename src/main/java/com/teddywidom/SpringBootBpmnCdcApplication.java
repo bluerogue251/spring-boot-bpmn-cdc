@@ -22,12 +22,12 @@ public class SpringBootBpmnCdcApplication {
     public CommandLineRunner demo(UserRepository repo) {
         return (args) -> {
             // save a couple of customers
-            User jackBauer = new User("Jack", "Bauer");
+            User jackBauer = new User("Jack", "Bauer", "jack@example.com", "blargh");
             repo.save(jackBauer);
-            repo.save(new User("Chloe", "O'Brian"));
-            repo.save(new User("Kim", "Bauer"));
-            repo.save(new User("David", "Palmer"));
-            repo.save(new User("Michelle", "Dessler"));
+            repo.save(new User("Chloe", "O'Brian", "chloe@example.com", "blargh"));
+            repo.save(new User("Kim", "Bauer", "kim@example.com", "blargh"));
+            repo.save(new User("David", "Palmer", "david@example.com", "blargh"));
+            repo.save(new User("Michelle", "Dessler", "michelle@example.com", "blargh"));
 
             // fetch all Users
             log.info("Users found with findAll():");

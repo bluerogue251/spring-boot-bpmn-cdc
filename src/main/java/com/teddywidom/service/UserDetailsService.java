@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 
-@Service("authenticationManager")
+@Service
 public class UserDetailsService implements org.springframework.security.core.userdetails.UserDetailsService {
     private Logger logger = LoggerFactory.getLogger(UserDetailsService.class);
 
