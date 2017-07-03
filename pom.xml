@@ -9,7 +9,7 @@
     <packaging>jar</packaging>
 
     <name>spring-boot-bpmn-cdc</name>
-    <description>Demo project for Spring Boot with Business Process Modelling Notation and Change Data Capture
+    <description>Demo project for Spring Boot with Business Process Model and Notation and Change Data Capture
     </description>
 
     <parent>
