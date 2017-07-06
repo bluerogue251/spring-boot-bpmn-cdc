@@ -1,10 +1,7 @@
-* Set up user authentication
-  - Binary authenticated/not-authenticated is fine for now, no need for finer grained access control
+* Set up a Wicket Frontend
 
 * Configure flyway to NOT auto run at app startup time (performance considerations)
   - Instead, there should be a special maven command to migrate the dev db, or even do a template / dev / test db setup...
-
-* Set up an Angular App Frontend
 
 * Set up an Activiti process for Batches/SampleDataSources/Reports
   - Unfulfilled reports will prompt users to create batches

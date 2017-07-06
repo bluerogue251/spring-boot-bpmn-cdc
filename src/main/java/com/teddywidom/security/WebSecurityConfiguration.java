@@ -1,8 +1,6 @@
 package com.teddywidom.security;
 
-import com.teddywidom.repo.UserRepository;
 import com.teddywidom.service.UserDetailsService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -14,9 +12,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
-    @Autowired
-    private UserRepository userRepository;
-
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http

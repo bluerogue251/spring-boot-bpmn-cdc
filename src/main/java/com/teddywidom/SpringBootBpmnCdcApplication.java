@@ -8,6 +8,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @SpringBootApplication
 public class SpringBootBpmnCdcApplication {
@@ -21,21 +22,17 @@ public class SpringBootBpmnCdcApplication {
     @Bean
     public CommandLineRunner demo(UserRepository repo) {
         return (args) -> {
-            // save a couple of customers
-            User jackBauer = new User("Jack", "Bauer", "jack@example.com", "blargh");
-            repo.save(jackBauer);
-            repo.save(new User("Chloe", "O'Brian", "chloe@example.com", "blargh"));
-            repo.save(new User("Kim", "Bauer", "kim@example.com", "blargh"));
-            repo.save(new User("David", "Palmer", "david@example.com", "blargh"));
-            repo.save(new User("Michelle", "Dessler", "michelle@example.com", "blargh"));
+            // TODO: use a better test data creation mechanism
+            // Delete all users in the db to start fresh
+            repo.deleteAll();
 
-            // fetch all Users
-            log.info("Users found with findAll():");
-            log.info("-------------------------------");
-            for (User User : repo.findAll()) {
-                log.info(User.toString());
-            }
-            log.info("");
+            // Create several standard users for dev data
+            User jackBauer = new User("Jack", "Bauer", "jack@example.com", new BCryptPasswordEncoder().encode("blargh"));
+            repo.save(jackBauer);
+            repo.save(new User("Chloe", "O'Brian", "chloe@example.com", new BCryptPasswordEncoder().encode("blargh")));
+            repo.save(new User("Kim", "Bauer", "kim@example.com", new BCryptPasswordEncoder().encode("blargh")));
+            repo.save(new User("David", "Palmer", "david@example.com", new BCryptPasswordEncoder().encode("blargh")));
+            repo.save(new User("Michelle", "Dessler", "michelle@example.com", new BCryptPasswordEncoder().encode("blargh")));
         };
     }
 }
