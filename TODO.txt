@@ -1,7 +1,8 @@
+## Still to do:
+
 * Set up a Wicket Frontend
 
-* Configure flyway to NOT auto run at app startup time (performance considerations)
-  - Instead, there should be a special maven command to migrate the dev db, or even do a template / dev / test db setup...
+* Configure flyway and the app to use two separate db users (flyway the superuser, the app a read/write user)
 
 * Set up an Activiti process for Batches/SampleDataSources/Reports
   - Unfulfilled reports will prompt users to create batches
@@ -16,3 +17,18 @@
 
 * Set up CDC (Bottled Water or Debezium) and a UI to explore changes to data
   - Ideally we will be able to see in this UI _who_ the logged in user at the time of each change was
+
+* Set up a production build with Jenkins
+  - Should push to Elastic Beanstalk
+  - Should be able to run tests
+  - Should be able to migrate the production db after a manual confirmation showing what the changes will be (i.e. the `flyway info` output)
+
+
+## Already Done
+
+* Set up user authentication
+  - Binary authenticated/not-authenticated is fine for now, no need for finer grained access control
+  - I ended up doing this with Bcrypt password encoder
+
+* Configure flyway to NOT auto run at app startup time (performance considerations)
+  - Instead, there should be a special maven command to migrate the dev db, or even do a template / dev / test db setup...
