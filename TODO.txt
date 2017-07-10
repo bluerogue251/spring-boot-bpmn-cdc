@@ -23,6 +23,10 @@
   - Should be able to run tests
   - Should be able to migrate the production db after a manual confirmation showing what the changes will be (i.e. the `flyway info` output)
 
+* Put flyway and its resources into a separate maven module
+  - Exclude these resources (such as migration SQL files) from the resulting compiled app code to avoid excessive copying
+
+* Use a CSS framework to improve the appearance of the app
 
 ## Already Done
 
