@@ -1,11 +1,7 @@
 ## Still to do:
 
-* Set up a Wicket Frontend
-
-* Configure flyway and the app to use two separate db users (flyway the superuser, the app a read/write user)
-
 * Set up an Activiti process for Batches/SampleDataSources/Reports
-  - Unfulfilled reports will prompt users to create batches
+  - Unfulfilled reports will prompt users to create batches/put samples on batches...
   - Batch creation will prompt users to mark batches as "started"
   - Marking a batch as "started" will prompt users to upload a CSV with data from that batch -- thereby marking the batch as "under BioQC"
   - Uploading a CSV with data will create SampleDataSources that then go through:
@@ -15,7 +11,11 @@
     process
   - Marking a SampleDataSource as QC_DECLINED or QC_APPROVED or QC_PENDING will update the status of the report it can be attached to and the batch it belongs to
 
-* Set up CDC (Bottled Water or Debezium) and a UI to explore changes to data
+* Set up CDC (Bottled Water or Debezium)
+
+* Set up a UI to do a very generalized search on any batch, sampleDataSource, or report (using Elasticsearch) using CDC data to build search indices
+
+* Set up a UI to show historical changes to data as captured by CDC
   - Ideally we will be able to see in this UI _who_ the logged in user at the time of each change was
 
 * Set up a production build with Jenkins
@@ -28,7 +28,15 @@
 
 * Use a CSS framework to improve the appearance of the app
 
+* Configure Logged in Session storage as web browser cookies, to prevent signout during app server restarts.
+
+
+
 ## Already Done
+
+* Set up an MVP Wicket Frontend
+
+* Configure flyway and the app to use two separate db users (flyway the superuser, the app a read/write user)
 
 * Set up user authentication
   - Binary authenticated/not-authenticated is fine for now, no need for finer grained access control

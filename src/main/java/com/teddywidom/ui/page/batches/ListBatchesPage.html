@@ -1,10 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:wicket="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>SPBC Demo - Batches</title>
 </head>
 <body>
-<h1>Batches</h1>
+<wicket:extend>
+    <h1>Batches</h1>
+    <table>
+        <thead>
+        <th>Barcode</th>
+        <th>Assay Type</th>
+        </thead>
+        <tbody>
+        <tr wicket:id="batches">
+            <td wicket:id="barcode"></td>
+            <td wicket:id="assayType"></td>
+        </tr>
+        </tbody>
+    </table>
+</wicket:extend>
 </body>
 </html>

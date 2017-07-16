@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:wicket="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>SPBC Demo - Users</title>
+</head>
+<body>
+<wicket:extend>
+    <h1>Users</h1>
+    <table>
+        <thead>
+        <th>Username</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Created</th>
+        </thead>
+        <tbody>
+        <tr wicket:id="users">
+            <td wicket:id="username"></td>
+            <td wicket:id="firstName"></td>
+            <td wicket:id="lastName"></td>
+            <td wicket:id="created"></td>
+        </tr>
+        </tbody>
+    </table>
+</wicket:extend>
+</body>
+</html>

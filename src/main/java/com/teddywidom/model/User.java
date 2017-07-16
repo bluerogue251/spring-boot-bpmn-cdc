@@ -5,12 +5,13 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "users")
-public class User {
+public class User implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -51,5 +52,17 @@ public class User {
 
     public String getEncryptedPassword() {
         return encryptedPassword;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public Timestamp getCreatedAt() {
+        return createdAt;
     }
 }
