@@ -6,6 +6,7 @@ GRANT USAGE ON SCHEMA public TO basic_access_group;
 -- Create a group that has read-only privileges on the database.
 CREATE ROLE read_group;
 GRANT SELECT ON ALL TABLES IN SCHEMA public TO read_group;
+GRANT SELECT ON ALL SEQUENCES IN SCHEMA public TO read_group;
 
 -- Create a group that has write-only privileges on the database.
 CREATE ROLE write_group;
