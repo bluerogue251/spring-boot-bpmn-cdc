@@ -10,6 +10,7 @@
     c) QC_APPROVED
     process
   - Marking a SampleDataSource as QC_DECLINED or QC_APPROVED or QC_PENDING will update the status of the report it can be attached to and the batch it belongs to
+  - Consider using activiti-explorer for the UI
 
 * Set up CDC (Bottled Water or Debezium)
 
@@ -25,15 +26,6 @@
 
 * Put flyway and its resources into a separate maven module
   - Exclude these resources (such as migration SQL files) from the resulting compiled app code to avoid excessive copying
-
-* Use a CSS framework to improve the appearance of the app
-
-* Configure Logged in Session storage as web browser cookies, to prevent signout during app server restarts.
-
-* Configure flyway's `schema_version` table to live in a separate postgres schema called `flyway`. Only the `postgres` role should have access to this schema.
-  - Difficult because if we set `flyway` as the first schema (which is how flyway figures out where it's metadata table is), then `flyway` also becomes the default schema for every other migration, which is *not* what we want.
-  - See https://flywaydb.org/documentation/maven/migrate
-
 
 ## Already Done
 
@@ -51,3 +43,12 @@
 * Configure activiti to run as a separate postgres user.
   - Don't allow activiti postgres role access to any non-activiti tables.
   - And don't allow non-activiti postgres roles any access to activiti tables.
+  
+  
+## Nice-to-haves (Won't do for now)
+
+* Configure Logged in Session storage as web browser cookies, to prevent signout during app server restarts.
+  
+* Configure flyway's `schema_version` table to live in a separate postgres schema called `flyway`. Only the `postgres` role should have access to this schema.
+  - Difficult because if we set `flyway` as the first schema (which is how flyway figures out where it's metadata table is), then `flyway` also becomes the default schema for every other migration, which is *not* what we want.
+  - See https://flywaydb.org/documentation/maven/migrate  

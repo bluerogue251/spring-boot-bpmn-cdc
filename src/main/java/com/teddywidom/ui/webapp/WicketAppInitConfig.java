@@ -4,6 +4,7 @@ import com.giffing.wicket.spring.boot.context.extensions.ApplicationInitExtensio
 import com.giffing.wicket.spring.boot.context.extensions.WicketApplicationInitConfiguration;
 import com.teddywidom.ui.page.batches.ListBatchesPage;
 import com.teddywidom.ui.page.users.ListUsersPage;
+import com.teddywidom.ui.page.workflows.ListProcessDefinitionsPage;
 import org.apache.wicket.protocol.http.WebApplication;
 
 @ApplicationInitExtension
@@ -12,5 +13,6 @@ public class WicketAppInitConfig implements WicketApplicationInitConfiguration {
     public void init(WebApplication webApplication) {
         webApplication.mountPage("/batches", ListBatchesPage.class);
         webApplication.mountPage("/users", ListUsersPage.class);
+        webApplication.mountPage("/workflows", ListProcessDefinitionsPage.class);
     }
 }

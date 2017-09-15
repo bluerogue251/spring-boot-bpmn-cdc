@@ -4,6 +4,7 @@ import com.teddywidom.model.Batch;
 import com.teddywidom.model.User;
 import com.teddywidom.repo.BatchRepository;
 import com.teddywidom.repo.UserRepository;
+import org.activiti.engine.ProcessEngine;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
@@ -11,6 +12,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
+import java.util.HashSet;
+import java.util.Set;
 
 @SpringBootApplication
 public class SpringBootBpmnCdcApplication {
@@ -23,7 +27,7 @@ public class SpringBootBpmnCdcApplication {
 
     // TODO understand how the application knows here how to instantiate the correct UserRepository implementation
     @Bean
-    public CommandLineRunner demo(UserRepository userRepo, BatchRepository batchRepo) {
+    public CommandLineRunner demo(UserRepository userRepo, BatchRepository batchRepo, ProcessEngine processEngine) {
         return (args) -> {
             // TODO: use a better test data creation mechanism
             // Delete all records in the db to start fresh
@@ -37,6 +41,21 @@ public class SpringBootBpmnCdcApplication {
             batchRepo.save(new Batch("7654321bbrfb", "microarray"));
             batchRepo.save(new Batch("7654321bbrfb", "nextGenerationSequencing"));
             batchRepo.save(new Batch("9876234uhytr", "sangerSequencing"));
+
+
+            Set<String> processes = new HashSet<>();
+            processes.add("Developer_Hiring");
+            processes.add("Trw_Test_Process");
+            processes.add("Trw_Test_Process_Number_Two");
+
+            for (String p : processes) {
+                processEngine.getRepositoryService()
+                        .createDeployment()
+                        .name(p)
+                        .addClasspathResource("processes/" + p + ".bpmn20.xml")
+                        .enableDuplicateFiltering()
+                        .deploy();
+            }
         };
     }
 }
