@@ -21,7 +21,6 @@ public class SpringBootBpmnCdcApplication {
         SpringApplication.run(SpringBootBpmnCdcApplication.class, args);
     }
 
-    // TODO understand how the application knows here how to instantiate the correct UserRepository implementation
     @Bean
     public CommandLineRunner demo(UserRepository userRepo, BatchRepository batchRepo) {
         return (args) -> {
